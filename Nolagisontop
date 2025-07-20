@@ -1,1 +1,48 @@
-loadstring(game:HttpGet("https://pastefy.app/TkiLmsWu/raw"))()
+-- Fake GUI for Grow A Garden
+-- Visual only, does nothing in-game
+-- Author: You
+
+-- Services
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+local ScreenGui = Instance.new("ScreenGui", Player:WaitForChild("PlayerGui"))
+ScreenGui.Name = "FakeGrowAGardenGUI"
+
+-- Main Frame
+local MainFrame = Instance.new("Frame", ScreenGui)
+MainFrame.Size = UDim2.new(0.4, 0, 0.5, 0)
+MainFrame.Position = UDim2.new(0.3, 0, 0.25, 0)
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.BorderSizePixel = 0
+
+-- Title
+local Title = Instance.new("TextLabel", MainFrame)
+Title.Size = UDim2.new(1, 0, 0.2, 0)
+Title.Position = UDim2.new(0, 0, 0, 0)
+Title.BackgroundTransparency = 1
+Title.Text = "🌱 Grow A Garden GUI"
+Title.TextColor3 = Color3.fromRGB(0, 255, 0)
+Title.TextScaled = true
+Title.Font = Enum.Font.GothamBold
+
+-- Fake Buttons
+local function createButton(text, position)
+    local Button = Instance.new("TextButton", MainFrame)
+    Button.Size = UDim2.new(0.8, 0, 0.15, 0)
+    Button.Position = UDim2.new(0.1, 0, position, 0)
+    Button.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+    Button.TextColor3 = Color3.fromRGB(255, 255, 255)
+    Button.Font = Enum.Font.Gotham
+    Button.TextScaled = true
+    Button.Text = text
+    Button.MouseButton1Click:Connect(function()
+        Button.Text = "⚠️ Not Available"
+        wait(1)
+        Button.Text = text
+    end)
+end
+
+createButton("💧 Water Plants", 0.25)
+createButton("🪴 Harvest", 0.45)
+createButton("🌻 Plant Seeds", 0.65)
+createButton("🛒 Open Shop", 0.85)
